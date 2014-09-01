@@ -1,0 +1,1 @@
+Bitmarket.ph Magento Plugin
