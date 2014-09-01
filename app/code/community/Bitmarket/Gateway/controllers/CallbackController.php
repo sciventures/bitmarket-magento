@@ -13,7 +13,7 @@ class Bitmarket_Gateway_CallbackController extends Mage_Core_Controller_Front_Ac
 	      	$order = Mage::getModel('sales/order')->load($order);
 			if ($order == 0) return;
 	        
-			if ($confirmation > 0) {
+			if ($confirmation > 0 && $payment->getData("invoice_id") == $id) {
 		        $payment = $order->getPayment();
 		        $payment->setTransactionId($id)
 		          ->setPreparedMessage("Paid with Bitcoin via Bitmarket.ph Ref no: $id.")

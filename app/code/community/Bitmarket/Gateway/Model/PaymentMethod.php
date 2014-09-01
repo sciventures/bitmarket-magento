@@ -80,7 +80,7 @@ class Bitmarket_Gateway_Model_PaymentMethod extends Mage_Payment_Model_Method_Ab
         $body = json_decode($body);
         if ($body != null) {
             $paylink = $body['paylink_url']."?iframe";
-            $id = $body['id'];
+            $payment->setData("invoice_id",$body['id']);
 
         } else {
             Mage::log('Error creating Bitmarket.ph invoice', Zend_Log::CRIT);
@@ -92,14 +92,11 @@ class Bitmarket_Gateway_Model_PaymentMethod extends Mage_Payment_Model_Method_Ab
         Mage::log('Error creating Bitmarket.ph invoice', Zend_Log::CRIT);
         Mage::log("HTTP Exception: ". $ex, Zend_Log::CRIT);
         Mage::throwException("Error creating Bitmarket.ph invoice. Please try again or use another payment option.");
-        $paylink = "https://pay.bitmarket.ph/tryagain?iframe";
-        $id = null;
-
       }
       
 
       $payment->setIsTransactionPending(true);
-      Mage::getSingleton('customer/session')->($paylink);
+      Mage::getSingleton('customer/session')->setRedirectUrl($paylink);
       
       return $this;
     }
