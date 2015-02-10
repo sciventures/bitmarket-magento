@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+
+    <modules>
+       <Bitmarket_Payment>
+          <version>0.1.0</version>
+       </Bitmarket_Payment>
+    </modules>
+
+    <frontend>
+        <routers>
+            <bitmarket>
+                <use>standard</use>
+                <args>
+                    <module>Bitmarket_Payment</module>
+                    <frontName>bitmarket</frontName>
+                </args>
+            </bitmarket>
+        </routers>
+    </frontend>
+
+    <global>
+        <models>
+            <bitmarket>
+                <class>Bitmarket_Payment_Model</class>
+            </bitmarket>
+        </models>
+        <helpers>
+            <bitmarket>
+                <class>Bitmarket_Payment_Helper</class>
+            </bitmarket>
+        </helpers>
+        <blocks>
+            <bitmarket>
+                <class>Bitmarket_Payment_Block</class>
+            </bitmarket>
+        </blocks>
+        <resources>
+            <bitmarket_setup>
+                <setup>
+                    <module>Bitmarket_Payment</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </bitmarket_setup>
+            <bitmarket_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </bitmarket_write>
+            <bitmarket_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </bitmarket_read>
+        </resources>
+    </global>
+
+    <default>
+        <payment>
+            <bitmarket>
+                <active>0</active>
+                <model>bitmarket/method_bitcoin</model>
+                <title>Bitcoin</title>
+                <payment_action>authorize</payment_action>
+                <allowspecific>0</allowspecific>
+                <auth_header>Authorization: bitmarket-sec {api_token}</auth_header>
+                <invoice_endpoint>https://api.bitmarket.ph/invoice</invoice_endpoint>
+                <paylink_endpoint>https://api.bitmarket.ph/invoice/{invoice_id}/paylink</paylink_endpoint>
+                <pay_url>https://pay.bitmarket.ph/{paylink_code}</pay_url>
+                <callback_path>bitmarket/callback?order_id={order_id}</callback_path>
+                <redirect_path>checkout/onepage/success</redirect_path>
+            </bitmarket>
+         </payment>
+    </default>
+
+</config>
