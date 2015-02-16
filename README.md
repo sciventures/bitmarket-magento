@@ -14,8 +14,6 @@ This is because there are little to no fees for transferring Bitcoins from one p
 
 # Installation
 
-## Magento Connect Manager
-
 ## Download
 
 Visit the [Releases](https://github.com/sciventures/bitmarket-magento/) page of this repository and download the latest version. Once this is done, you can just unzip the contents and use any method you want to put them on your server. The contents will mirror the Magento directory structure.
