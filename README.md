@@ -33,7 +33,7 @@ Here you will need to create an [API token](https://merchants.bitmarket.ph/token
 
 # Usage
 
-Once enabled, your customers will be given the option to pay with Bitcoins. Once they checkout they are redirected to a full screen BitPay invoice to pay for the order.
+Once enabled, your customers will be given the option to pay with Bitcoins. Once they checkout they are redirected to a full screen Bitcoin via Bitmarket invoice to pay for the order.
 
 As a merchant, the orders in your Magento store can be treated as any other order.
 
